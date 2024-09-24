@@ -9,9 +9,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './article.component.scss'
 })
 
+
+
 export class ArticleComponent {
 
-  article = {
+  article: Article = {
     title: 'Titre de l\'article',
     author: 'John Doe',
     content: 'Voici le contenu de l\'article.',
@@ -23,4 +25,12 @@ export class ArticleComponent {
   togglePublication(): void {
     this.article.isPublished = !this.article.isPublished;
   }
+}
+type Article = {
+  title: string
+  author: string
+  content: string
+  image: string
+  isPublished: boolean
+  comments: string
 }
