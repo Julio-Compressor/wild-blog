@@ -1,6 +1,17 @@
 <div class="card" style="width: 18rem;">
+    <img [src]="article.image" [alt]="article.title">
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">{{ article.title }}</h5>
+        <p class="card-text">{{ article.content }}</p>
+        <p class="card-text"><i>by {{article.author}}</i></p>
+        <p>{{ article.isPublished ? 'Publié' : 'Non publié' }}</p>
     </div>
+    <ul class="list-group list-group-flush">
+        <li>
+            <i>comment:</i><br>
+            <input type="text" [(ngModel)]="article.comments">
+        </li>
+    </ul>
+    <button (click)="togglePublication()" class="btn btn-primary">{{ article.isPublished ? 'Dépublier' : 'Publier'
+        }}</button>
 </div>
