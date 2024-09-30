@@ -1,0 +1,77 @@
+<div class="container">
+    <form  #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()">
+        <div>
+            Le formulaire est-il soumis ? {{contactForm.submitted}}
+        </div>
+        <div>
+         Le formulaire est-il valide ? {{contactForm.valid}}
+        </div>
+        <div>
+            Le formulaire est-il INvalide ? {{contactForm.invalid}}
+        </div>
+        <div class="row g-3">
+            <div class="col">
+              <input type="text" name="firstname" class="form-control" [(ngModel)]="newMessage.firstname" #firstname="ngModel" placeholder="First name" aria-label="First name" required minlength="2">
+            </div>
+            <div class="col">
+              <input type="text" name="lastname" class="form-control" [(ngModel)]="newMessage.lastname" #lastname="ngModel" placeholder="Last name" aria-label="Last name"required minlength="2">
+            </div>
+            @if (contactForm.submitted){
+                @if (firstname.errors) {
+                    <div>
+                      @if (firstname.errors['required']) {
+                        <span>Le prenom est requis</span>
+                      }
+                      @if (firstname.errors['minlength']) {
+                        <span>La longueur minimale de votre prenom doit être supérieure à 2</span>
+                      }
+                    </div>
+                }
+                @if (lastname.errors) {
+                    <div>
+                      @if (lastname.errors['required']) {
+                        <span>Le nom est requis</span>
+                      }
+                      @if (lastname.errors['minlength']) {
+                        <span>La longueur minimale de votre nom doit être supérieure à 2</span>
+                      }
+                    </div>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <input type="email" name="email" class="form-control" [(ngModel)]="newMessage.email" #email="ngModel"placeholder="email" id="exampleInputEmail1" aria-describedby="emailHelp" required email>
+        </div>
+        @if (contactForm.submitted) {
+            @if (email.errors) {
+                <div>
+                  @if (email.errors['required']) {
+                    <span>L'email est requis</span>
+                  }
+                  @if (email.errors['email']) {
+                    <span>Veuillez fournir une adresse email valide</span>
+                  }
+                </div>
+            }
+        }
+        <div class="input-group">
+            <span class="input-group-text">Contenu du message</span>
+            <textarea class="form-control" name="content" [(ngModel)]="newMessage.content" #content="ngModel" required minlength="20" aria-label="With textarea"></textarea>
+        </div>
+        @if (contactForm.submitted){
+            @if (content.errors) {
+                <div>
+                  @if (content.errors['required']) {
+                    <span>Le contenu du message est requis</span>
+                  }
+                  @if (content.errors['minlength']) {
+                    <span>Le contenu doit comporter au moins 20 caractères</span>
+                  }
+                </div>
+            }
+        }
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <button type="reset" class="btn btn-light">Restaurer</button>
+    </form>
+
+</div>
