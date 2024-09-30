@@ -1,0 +1,24 @@
+@if (isUnpublished()) {
+    <div class="container">
+      <p>Aucun article à publer</p>
+    </div>
+  }
+  <div class="container">
+    @for (article of articles; track $index) {
+      @if (article.isPublished) {
+        <div class="card" style="width: 18rem;">
+          <img [src]="article.image" class="card-img-top" [alt]="article.title">
+          <div class="card-body">
+            <h5 class="card-title" [ngStyle]="{'color': article.likes > 150 ? 'green' : 'black'}">{{ article.title }}</h5>
+            <p class="card-text">{{ article.content }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ article.likes }}</li>
+          </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a [routerLink]="['/article', article.id]">Voir l'article</a></li>
+          </ul>
+        </div>
+      }
+    }
+  </div>
