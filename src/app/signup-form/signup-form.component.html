@@ -1,13 +1,13 @@
 <div class="container">
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-        <div>
+        <div class="input">
           <label for="username">Nom d'utilisateur</label>
-          <input id="username" formControlName="username">
+          <input id="username" pInputText  formControlName="username">
         </div>
       
-        <div>
+        <div class="input">
           <label for="email">Email</label>
-          <input id="email" formControlName="email">
+          <input id="email" pInputText formControlName="email">
         </div>
         @if (signUpForm.get('username')?.invalid && signUpForm.get('username')?.touched) {
             <div>
@@ -20,9 +20,9 @@
             </div>
           }
         <div formGroupName="passwords">
-            <div>
+            <div class="input">
                 <label for="password">Mot de passe</label>
-                <input type="password" id="password" formControlName="password">
+                <input type="password" pInputText id="password" formControlName="password">
                 @if (signUpForm.get('passwords.password')?.invalid && signUpForm.get('passwords.password')?.touched) {
                 <div>
                 @if (signUpForm.get('passwords.password')?.errors?.['required']) {
@@ -35,17 +35,17 @@
                 }
             </div>
     
-            <div>
+            <div class="input">
                 <label for="confirmPassword">Confirmer le mot de passe</label>
-                <input type="password" id="confirmPassword" formControlName="confirmPassword">
+                <input type="password" pInputText id="confirmPassword" formControlName="confirmPassword">
                 @if (signUpForm.get('passwords')?.errors?.['passwordsMismatch'] && signUpForm.get('passwords')?.touched) {
                 <span>Les mots de passe ne correspondent pas.</span>
                 }
             </div>
         </div>
-      
-        <button type="submit" [disabled]="signUpForm.invalid">S'inscrire</button>
+        <button pButton pRipple label="S'inscrire" class="p-button-success" [disabled]="signUpForm.invalid"></button>
     </form>
 </div>
+
 
 

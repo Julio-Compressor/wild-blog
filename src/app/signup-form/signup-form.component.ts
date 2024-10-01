@@ -1,17 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
+
 
 @Component({
   selector: 'app-signup-form',
   standalone: true,
-  imports: [FloatLabelModule, ReactiveFormsModule, ButtonModule],
+  imports: [ReactiveFormsModule, ButtonModule, FormsModule, InputTextModule],
   templateUrl: './signup-form.component.html',
   styleUrl: './signup-form.component.scss'
 })
 export class SignupFormComponent {
-
   formBuilder = inject(FormBuilder);
 
   signUpForm = this.formBuilder.group({
