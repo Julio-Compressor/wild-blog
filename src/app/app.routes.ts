@@ -4,12 +4,14 @@ import { ArticlePageComponent } from './article-page/article-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { PilouComponent } from './pilou/pilou.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent },
     { path: 'article/:id', component: ArticlePageComponent },
     { path: 'contact', component: ContactFormComponent },
     { path: 'signup', component: SignupFormComponent },
+    { path: 'pilou', component: PilouComponent },
     { path: '**', component: NotFoundComponent }
 
 ];

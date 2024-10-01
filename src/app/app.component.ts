@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from "./home-page/home-page.component";
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,7 @@ import { HomePageComponent } from "./home-page/home-page.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+  primeConfig = inject(PrimeNGConfig).ripple = true;
 
 }
