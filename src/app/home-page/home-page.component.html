@@ -3,10 +3,15 @@
       <p>Aucun article à publer</p>
     </div>
   }
+  @if(messageFromChild != ""){
+    <div class="alert alert-primary" role="alert">
+      {{ messageFromChild }}
+    </div>
+  }
   <div class="container">
     @for (article of articles; track $index) {
       @if (article.isPublished) {
-        <app-article-page [articleChild]="article" ></app-article-page>
+        <app-article-card [articleChild]="article" (notifyParent)="handleNotification($event)"></app-article-card>
       }
     }
   </div>

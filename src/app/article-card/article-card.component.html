@@ -1,0 +1,18 @@
+@if(articleChild){
+    <div class="card" style="width: 18rem;">
+        <img [src]="articleChild.image" class="card-img-top" [alt]="articleChild.title">
+        <div class="card-body">
+          <h5 class="card-title" [ngStyle]="{'color': articleChild.likes > 150 ? 'green' : 'black'}">{{ articleChild.title }}</h5>
+          <p class="card-text">{{ articleChild.content }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                {{ articleChild.likes }}
+                <button type="button" class="btn btn-info" (click)="uplike()">Like</button>
+            </li>
+        </ul>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a [routerLink]="['/article', articleChild.id]">Voir l'article</a></li>
+        </ul>
+    </div>
+  }

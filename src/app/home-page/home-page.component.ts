@@ -3,12 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Article } from '../model/article.class';
-import { ArticlePageComponent } from "../article-page/article-page.component";
+import { ArticleCardComponent } from '../article-card/article-card.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, ArticlePageComponent],
+  imports: [CommonModule, FormsModule, RouterLink, ArticleCardComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss'
 })
@@ -46,6 +46,14 @@ export class HomePageComponent {
       200
     )
   ];
+  messageFromChild: string = '';
+
+  handleNotification(message: string) {
+    this.messageFromChild = message;
+    setTimeout(() => {
+      this.messageFromChild = '';
+    }, 500);
+  }
 
   isUnpublished(): boolean {
     return this.articles.every(article => !article.isPublished)
